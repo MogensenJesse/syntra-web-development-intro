@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Videos</title>
 </head>
+
 <body>
   <ul class="videos">
     <li data-time="5:43">
@@ -181,7 +183,62 @@
       Video 58
     </li>
   </ul>
-<script>
-</script>
+  <script>
+
+    // const items = document.querySelectorAll("li")
+    // let collection = []
+
+    // collection.push(items);
+    // // console.log(items)
+
+    // collection.map((item) => {
+    //   item.getAttribute('data-time');
+    // });
+
+    // console.log(collection);
+
+
+
+    // const items = document.querySelectorAll("li")
+    // let collection = []
+    // // console.log(items)
+
+    // items.forEach(function (item) {
+
+    //   // console.log(item);
+    //   let times = item.getAttribute('data-time');
+    //   console.log(times)
+
+    // });
+
+
+    const lists = Array.from(document.querySelectorAll('[data-time]'))    // data-attribuut tussen []
+
+    console.log(lists)
+
+    const times = lists.map((node) => {
+      return node.dataset.time
+    })
+
+    console.log(times)
+
+    const seconds = times.map((string) => {
+      const [min, sec] = string.split(':').map(parseFloat)
+      return (min * 60) + sec
+    })
+
+    console.log(seconds)
+
+    const sum = seconds.reduce((total, sec) => total + sec, 0)
+
+    console.log(sum)
+
+    const finalTime = new Date(sum * 1000).toISOString().substr(11, 8);       // niet volgens opdracht, wel correct :)
+
+    console.log(finalTime)
+
+
+  </script>
 </body>
+
 </html>
