@@ -18,6 +18,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 module.exports = {
+  //hier klopt nog iets niet
   writeItem: (item) => {
     const id = uuidv4();
     set(ref(database, "countries/" + id), item);

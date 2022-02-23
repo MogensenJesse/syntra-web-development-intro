@@ -29,7 +29,7 @@ api.get("/countries", (req, res, next) => {
 });
 
 api.delete("/countries", (req, res, next) => {
-  console.log(id)
+  console.log(id);
   return removeItem(id)
     .then((val) => {
       res.status(200).json({ success: "Welp, entry deleted" });
@@ -38,6 +38,7 @@ api.delete("/countries", (req, res, next) => {
 });
 
 api.post("/countries/:id", (req, res, next) => {
+  //hier klopt nog iets niet, check Github desktop
   const body = req.body;
   return writeItem(body)
     .then((val) => {
@@ -45,8 +46,6 @@ api.post("/countries/:id", (req, res, next) => {
     })
     .catch((err) => next(new HttpError(500, err.message)));
 });
-
-
 
 // middleware
 api.get(
