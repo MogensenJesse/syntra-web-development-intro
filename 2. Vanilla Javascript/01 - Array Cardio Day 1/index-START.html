@@ -75,44 +75,59 @@
 
     // 1. Filter the list of inventors for those who were born in the 1500's
 
-    const oldFarts = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
-    console.log(oldFarts)
+    const oldInventors = inventors.filter((inventor) => {
+      return inventor.year >= 1500 && inventor.year < 1600
+    })
+
+    console.log(oldInventors)
 
     // 2. Give us an array of the inventors first and last names
 
-    const inventorNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
-    console.log(inventorNames);
+    const fullNames = inventors.map((inventor) => {
+      return `${inventor.first} ${inventor.last}`
+    })
+
+    console.log(fullNames)
 
     // 3. Sort the inventors by birthdate, oldest to youngest
 
-    const inventorSort = inventors.sort((cv, nv) => {
-      return cv.year - nv.year;
-    });
-    console.log(inventorSort);
+    const sorted = inventors.sort((a, b) => {
+      return a.year - b.year
+    })
+
+    console.log(sorted)
 
     // 4. How many years did all the inventors live all together?
 
-    // 0 = accumulator, loop start vanaf 0
+    const sum = inventors.reduce((acc, cv) => {
+      return acc + (cv.passed - cv.year)
+    }, 0)
 
-    const countTotalYears = inventors.reduce((acc, currentInventor) => {
-      return acc + (currentInventor.passed - currentInventor.year);
-    }, 0);
-    console.log('countTotalYears', countTotalYears);
+    console.log(sum)
+
 
     // 5. Sort the inventors by years lived
 
-    const inventorListWithAge = inventors.map(inventor => {
-      return { ...inventor, age: inventor.passed - inventor.year };
-    });
-    const sortListByAge = inventorListWithAge.sort((compareFirstInv, compareSecondInv) => {
-      if (compareFirstInv.age > compareSecondInv.age) { return 1 } else { return -1 }
-    });
-    console.log('sortListByAge', sortListByAge);
+    const yearsLived = inventors.map((inventor) => {
+      return { ...inventor, age: inventor.passed - inventor.year }
+    })
+
+    console.log(yearsLived)
+
+    const inventorByAge = yearsLived.sort((a, b) => {
+      return a.age - b.age
+    })
+
+    console.log(inventorByAge)
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
     // Sort the people alphabetically by last name
+
+    const sortedPeople = people.sort()
+    console.log('Sorted people: ', sortedPeople)
 
     // Sum up the instances of each of these
     const data = [
@@ -131,6 +146,74 @@
       "car",
       "truck",
     ];
+
+
+    const instances = data.reduce((acc, curr) => {
+      return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+    }, {});
+
+    console.log(instances)
+
+
+
+    // // 1. Filter the list of inventors for those who were born in the 1500's
+
+    // const oldFarts = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
+    // console.log(oldFarts)
+
+    // // 2. Give us an array of the inventors first and last names
+
+    // const inventorNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    // console.log(inventorNames);
+
+    // // 3. Sort the inventors by birthdate, oldest to youngest
+
+    // const inventorSort = inventors.sort((cv, nv) => {
+    //   return cv.year - nv.year;
+    // });
+    // console.log(inventorSort);
+
+    // // 4. How many years did all the inventors live all together?
+
+    // // 0 = accumulator, loop start vanaf 0
+
+    // const countTotalYears = inventors.reduce((acc, currentInventor) => {
+    //   return acc + (currentInventor.passed - currentInventor.year);
+    // }, 0);
+    // console.log('countTotalYears', countTotalYears);
+
+    // // 5. Sort the inventors by years lived
+
+    // const inventorListWithAge = inventors.map(inventor => {
+    //   return { ...inventor, age: inventor.passed - inventor.year };
+    // });
+    // const sortListByAge = inventorListWithAge.sort((compareFirstInv, compareSecondInv) => {
+    //   if (compareFirstInv.age > compareSecondInv.age) { return 1 } else { return -1 }
+    // });
+    // console.log('sortListByAge', sortListByAge);
+
+    // // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+    // // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+    // // Sort the people alphabetically by last name
+
+    // // Sum up the instances of each of these
+    // const data = [
+    //   "car",
+    //   "car",
+    //   "truck",
+    //   "truck",
+    //   "bike",
+    //   "walk",
+    //   "car",
+    //   "van",
+    //   "bike",
+    //   "walk",
+    //   "car",
+    //   "van",
+    //   "car",
+    //   "truck",
+    // ];
   </script>
 </body>
 

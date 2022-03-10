@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
   <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
+
 <body>
-<script>
-</script>
+  <script>
+
+    const array = []
+    const key = "jesse"
+    window.addEventListener('keyup', (event) => {
+
+      array.push(event.key);
+
+      console.log(array)
+
+      array.splice(-key.length - 1, array.length - key.length);
+      if (array.join("").includes(key)) {
+        console.log("lol goed gedaan")
+        cornify_add()
+      }
+    })
+
+  </script>
 </body>
+
 </html>
