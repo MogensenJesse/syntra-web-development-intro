@@ -73,7 +73,7 @@ api.use("*", (req, res, next) => {
 
 // error handling
 api.use((err, req, res, next) => {
-  res.status(err.status).json({
+  res.status(err.status || 500).json({
     status: err.status,
     message: err.message,
   });
